@@ -637,7 +637,13 @@ module tt_um_nobleg30_uart_vga_scroller (
     assign uio_oe =
         8'b11000000;
 
-
+    // uio_in[7:6] correspond to pins configured as ALU outputs.
+    // Their input-side values are intentionally unused.
+    wire _unused = &{
+        uio_in[7:6],
+        1'b0
+    };
+    
     // ============================================================
     // SELECT ONE ROW FROM 5x7 FONT
     // ============================================================
